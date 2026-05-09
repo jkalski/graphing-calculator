@@ -6,36 +6,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Calculator App</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/mathjs@12/lib/browser/math.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7" defer></script>
     <script src="script.js" defer></script>
   </head>
   <body>
-    <main class="wrapper" aria-label="Calculator">
-      <section class="calculator-screen" aria-live="polite">
-        <output id="display">0</output>
+    <main class="app-shell">
+      <section class="wrapper" aria-label="Calculator">
+        <section class="calculator-screen" aria-live="polite">
+          <output id="display">0</output>
+        </section>
+
+        <section class="calculator-buttons" aria-label="Calculator buttons">
+          <button class="calc-button utility" type="button" data-action="clear">C</button>
+          <button class="calc-button utility" type="button" data-action="backspace">&larr;</button>
+          <button class="calc-button utility" type="button" data-insert="(">(</button>
+          <button class="calc-button utility" type="button" data-insert=")">)</button>
+
+          <button class="calc-button number" type="button" data-number="7">7</button>
+          <button class="calc-button number" type="button" data-number="8">8</button>
+          <button class="calc-button number" type="button" data-number="9">9</button>
+          <button class="calc-button operator" type="button" data-insert="/">&divide;</button>
+
+          <button class="calc-button number" type="button" data-number="4">4</button>
+          <button class="calc-button number" type="button" data-number="5">5</button>
+          <button class="calc-button number" type="button" data-number="6">6</button>
+          <button class="calc-button operator" type="button" data-insert="*">&times;</button>
+
+          <button class="calc-button number" type="button" data-number="1">1</button>
+          <button class="calc-button number" type="button" data-number="2">2</button>
+          <button class="calc-button number" type="button" data-number="3">3</button>
+          <button class="calc-button operator" type="button" data-insert="-">&minus;</button>
+
+          <button class="calc-button number" type="button" data-number="0">0</button>
+          <button class="calc-button number" type="button" data-insert=".">.</button>
+          <button class="calc-button operator" type="button" data-insert="^">^</button>
+          <button class="calc-button operator" type="button" data-insert="+">+</button>
+
+          <button class="calc-button function" type="button" data-insert="x">x</button>
+          <button class="calc-button function" type="button" data-insert="sin(">sin</button>
+          <button class="calc-button function" type="button" data-insert="cos(">cos</button>
+          <button class="calc-button function" type="button" data-insert="sqrt(">sqrt</button>
+
+          <button class="calc-button operator equals" type="button" data-action="equals">=</button>
+          <button class="calc-button graph-action span-three" type="button" data-action="graph-display">Graph</button>
+        </section>
       </section>
 
-      <section class="calculator-buttons" aria-label="Calculator buttons">
-        <button class="calc-button utility span-two" type="button" data-action="clear">C</button>
-        <button class="calc-button utility" type="button" data-action="backspace">←</button>
-        <button class="calc-button operator" type="button" data-operator="/">÷</button>
+      <section class="analytics-panel" aria-label="Graphing calculator">
+        <div class="panel-heading">
+          <h1>Function Grapher</h1>
+          <p>The calculator display is used for both evaluation and graphing.</p>
+        </div>
 
-        <button class="calc-button number" type="button" data-number="7">7</button>
-        <button class="calc-button number" type="button" data-number="8">8</button>
-        <button class="calc-button number" type="button" data-number="9">9</button>
-        <button class="calc-button operator" type="button" data-operator="*">×</button>
+        <div class="chart-frame">
+          <svg id="functionGraph" role="img" aria-label="Graph of the entered function"></svg>
+          <div id="graphTooltip" class="graph-tooltip" hidden></div>
+        </div>
 
-        <button class="calc-button number" type="button" data-number="4">4</button>
-        <button class="calc-button number" type="button" data-number="5">5</button>
-        <button class="calc-button number" type="button" data-number="6">6</button>
-        <button class="calc-button operator" type="button" data-operator="-">−</button>
-
-        <button class="calc-button number" type="button" data-number="1">1</button>
-        <button class="calc-button number" type="button" data-number="2">2</button>
-        <button class="calc-button number" type="button" data-number="3">3</button>
-        <button class="calc-button operator" type="button" data-operator="+">+</button>
-
-        <button class="calc-button number span-three" type="button" data-number="0">0</button>
-        <button class="calc-button operator equals" type="button" data-action="equals">=</button>
+        <button id="resetZoom" class="reset-zoom" type="button">Reset Zoom</button>
+        <p id="graphStatus" class="graph-status" aria-live="polite"></p>
       </section>
     </main>
   </body>
