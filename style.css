@@ -91,6 +91,7 @@ body {
 }
 
 .function {
+  /* Scientific/function keys added for the graphing calculator upgrade. */
   background: #8ea7bd;
   color: #fff;
   font-size: 1.35rem;
@@ -141,6 +142,7 @@ body {
 }
 
 .chart-frame {
+  /* Relative positioning lets the tooltip sit over the D3 SVG graph. */
   position: relative;
   height: 260px;
   padding: 12px;
@@ -174,10 +176,12 @@ body {
 }
 
 .result-area {
+  /* Filled by d3.area() to show the area under the plotted function. */
   fill: rgba(223, 143, 73, 0.16);
 }
 
 .result-line {
+  /* The d3.line() output is drawn as this animated SVG path. */
   fill: none;
   stroke: #df8f49;
   stroke-linecap: round;
@@ -186,18 +190,21 @@ body {
 }
 
 .graph-point {
+  /* D3 binds hover data points to these circles for tooltip interaction. */
   fill: #182235;
   stroke: #fff;
   stroke-width: 2;
 }
 
 .crosshair-line {
+  /* Moved during hover events to line up with the selected graph point. */
   stroke: #536070;
   stroke-dasharray: 4 4;
   stroke-width: 1;
 }
 
 .graph-tooltip {
+  /* Updated by D3 mouse events with the current x/y value. */
   position: absolute;
   padding: 6px 8px;
   border: 1px solid #aab3c0;

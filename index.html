@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Calculator App</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Math.js evaluates typed expressions; D3.js draws and animates the SVG graph. -->
     <script src="https://cdn.jsdelivr.net/npm/mathjs@12/lib/browser/math.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/d3@7" defer></script>
     <script src="script.js" defer></script>
@@ -17,6 +18,7 @@
           <output id="display">0</output>
         </section>
 
+        <!-- Expression keypad: these buttons build one display string used by both "=" and "Graph". -->
         <section class="calculator-buttons" aria-label="Calculator buttons">
           <button class="calc-button utility" type="button" data-action="clear">C</button>
           <button class="calc-button utility" type="button" data-action="backspace">&larr;</button>
@@ -59,6 +61,7 @@
           <p>The calculator display is used for both evaluation and graphing.</p>
         </div>
 
+        <!-- D3 renders the function inside this SVG and positions the tooltip over it. -->
         <div class="chart-frame">
           <svg id="functionGraph" role="img" aria-label="Graph of the entered function"></svg>
           <div id="graphTooltip" class="graph-tooltip" hidden></div>
